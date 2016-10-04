@@ -38,29 +38,29 @@ public class Rational {
 
 
     public Rational plus(Rational r) {
-    	return 	new Rational(this.numerator*r.denominator +
-    						r.numerator*this.denominator,
-    						this.denominator*r.denominator);
+    	return 	new Rational(this.num * r.denom +
+    						r.num*this.denom,
+    						this.denom*r.denom);
     }
 
     public static Rational sum(Rational a, Rational b) {
-    	return new Rational(a.numerator*b.denominator +
-    						b.numerator*a.denominator,
-    						a.denominator*b.denominator);
+    	return new Rational(a.num*b.denom +
+    						b.num*a.denom,
+    						a.denom*b.denom);
     }
 
     public Rational minus(Rational r) {
-    	return new Rational(this.plus(r.times(new Rational(-1, 1))))
+    	return this.plus(r.times(new Rational(-1, 1)));
     }
 
     public static Rational difference(Rational a, Rational b) {
-    	return new Rational(a.plus(b.times(new Rational(-1, 1))));
+    	return a.plus(b.times(new Rational(-1, 1)));
     }
 
     public Rational reciprocalOf() {
-    	if (this.numerator == 0)
+    	if (this.num == 0)
     		throw new java.lang.ArithmeticException("denominator may not be zero");
-    	return new Rational(this.denominator,this.numerator);
+    	return new Rational(this.denom,this.num);
     }
 
     public Rational dividedBy(Rational r) {
