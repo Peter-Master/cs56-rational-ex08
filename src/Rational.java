@@ -48,6 +48,14 @@ public class Rational {
     						b.numerator*a.denominator,
     						a.denominator*b.denominator);
     }
+
+    public Rational minus(Rational r) {
+    	return new Rational(this.plus(r.times(new Rational(-1, 1))))
+    }
+
+    public static Rational difference(Rational a, Rational b) {
+    	return new Rational(a.plus(b.times(new Rational(-1, 1))));
+    }
     
     public Rational() {
 	this.num = 1;
