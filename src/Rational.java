@@ -56,6 +56,12 @@ public class Rational {
     public static Rational difference(Rational a, Rational b) {
     	return new Rational(a.plus(b.times(new Rational(-1, 1))));
     }
+
+    public static Rational reciprocalOf() {
+    	if (this.numerator == 0)
+    		throw new java.lang.ArithmeticException("denominator may not be zero");
+    	return new Rational(this.denominator,this.numerator);
+    }
     
     public Rational() {
 	this.num = 1;
