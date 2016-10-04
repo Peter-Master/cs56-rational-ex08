@@ -4,13 +4,18 @@
     @author P. Conrad for CS56 F16
 
     */
+/**
+Peter Master, 10/4/2016
+*/
+
+import static java.lang.Math.abs;
 
 public class Rational {
 
     private int num;
     private int denom;
 
-    /** 
+    /**
 	greatest common divisor of a and b
 	@param a first number
 	@param b second number
@@ -23,6 +28,12 @@ public class Rational {
 	    return a;
 	else
 	    return gcd(b%a, a);
+    }
+
+    public static int lcm(int a, int b) {
+    	if (b == 0)
+    		return 0;
+    	return abs(a) / gcd(a, b) * abs(b);
     }
     
     public Rational() {
