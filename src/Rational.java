@@ -35,6 +35,19 @@ public class Rational {
     		return 0;
     	return abs(a) / gcd(a, b) * abs(b);
     }
+
+
+    public Rational plus(Rational r) {
+    	return 	new Rational(this.numerator*r.denominator +
+    						r.numerator*this.denominator,
+    						this.denominator*r.denominator);
+    }
+
+    public static Rational sum(Rational a, Rational b) {
+    	return new Rational(a.numerator*b.denominator +
+    						b.numerator*a.denominator,
+    						a.denominator*b.denominator);
+    }
     
     public Rational() {
 	this.num = 1;
