@@ -57,10 +57,18 @@ public class Rational {
     	return new Rational(a.plus(b.times(new Rational(-1, 1))));
     }
 
-    public static Rational reciprocalOf() {
+    public Rational reciprocalOf() {
     	if (this.numerator == 0)
     		throw new java.lang.ArithmeticException("denominator may not be zero");
     	return new Rational(this.denominator,this.numerator);
+    }
+
+    public Rational dividedBy(Rational r) {
+    	return this.times(r.reciprocalOf());
+    }
+
+    public static Rational quotient(Rational a, Rational b) {
+    	return a.times(b.reciprocalOf());
     }
     
     public Rational() {
