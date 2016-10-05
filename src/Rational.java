@@ -22,6 +22,8 @@ public class Rational {
 	@return gcd of a and b
     */
     public static int gcd(int a, int b) {
+    a = abs(a);
+    b = abs(b);
 	if (a==0)
 	    return b;
 	else if (b==0)
@@ -80,7 +82,7 @@ public class Rational {
 		if (denom== 0) {
 	    	throw new IllegalArgumentException("denominator may not be zero");
 		}
-		if (this.denom < 0) {
+		else if (denom < 0) {
 			this.num = -1*num;
 			this.denom = -1*denom;
 		}
