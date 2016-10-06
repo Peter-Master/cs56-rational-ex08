@@ -15,11 +15,19 @@ public class Rational {
     private int num;
     private int denom;
 
+    /**
+    default constructor constructs a Rational object representing "1/1"
+    */
     public Rational() {
 		this.num = 1;
 		this.denom = 1;
     }
 
+    /**
+    constructor that takes two arguments and constructs a Rational object representing "num/denom"
+    @param num numerator
+    @param denom denominator
+    */
     public Rational(int num, int denom) {
 		if (denom== 0) {
 	    	throw new IllegalArgumentException("denominator may not be zero");
@@ -68,63 +76,119 @@ public class Rational {
     	return abs(a) / gcd(a, b) * abs(b);
     }
 
+     /**
+    product of this and r
+    @param r multiplier
+    @return product of this and r
+    */
 	public Rational times(Rational r) {
 		return new Rational(this.num * r.num,
 			    			this.denom * r.denom);
     }
 
+    /**
+    product of a and b
+    @param a multiplicand
+    @param b multiplier
+    @return product of a and b
+    */
     public static Rational product(Rational a, Rational b) {
-	return new Rational(a.num * b.num,
+		return new Rational(a.num * b.num,
 			    		a.denom * b.denom);
     }
 
+    /**
+    sum of this and r
+    @param r adder
+    @return sum of this and r
+    */
     public Rational plus(Rational r) {
     	return 	new Rational(this.num * r.denom +
     						r.num*this.denom,
     						this.denom*r.denom);
     }
 
+    /**
+    sum of a and b
+    @param a first number
+    @param b second number
+    @return sum of a and b
+    */
     public static Rational sum(Rational a, Rational b) {
     	return new Rational(a.num*b.denom +
     						b.num*a.denom,
     						a.denom*b.denom);
     }
 
+   /**
+    difference of this and r
+    @param r subtrahend
+    @return difference of this and r
+    */
     public Rational minus(Rational r) {
     	return this.plus(r.times(new Rational(-1, 1)));
     }
 
+    /**
+    difference of a and b
+    @param a minuend
+    @param b subtrahend
+    @return sum of a and b
+    */
     public static Rational difference(Rational a, Rational b) {
     	return a.plus(b.times(new Rational(-1, 1)));
     }
 
+    /**
+	reciprocal of this
+    @return reciprocal of this
+    */
     public Rational reciprocalOf() {
     	if (this.num == 0)
     		throw new java.lang.ArithmeticException("denominator may not be zero");
     	return new Rational(this.denom,this.num);
     }
 
+    /**
+    quotient of this and r
+    @param r divisor
+    @return quotient of this and r
+    */
     public Rational dividedBy(Rational r) {
     	return this.times(r.reciprocalOf());
     }
 
+    /**
+    quotient of a and b
+    @param a dividend
+    @param b divisor
+    @return quotient of a and b
+    */
     public static Rational quotient(Rational a, Rational b) {
     	return a.times(b.reciprocalOf());
     }
 
+    /**
+    converts Rational object to String
+    @return string conveying the Rational object's state
+	*/
     public String toString() {
 		if (denom == 1 || num == 0)
 	    	return "" + num;
 		return num + "/" + denom;
     }
 
+    /**
+    gets numerator of this
+    @return numerator of this
+    */
     public int getNumerator() { return this.num; }
+
+    /**
+    gets denominator of this
+    @return denominator of this
+    */
     public int getDenominator() { return this.denom; }
-    
-    /** 
-	For testing getters.  
-	@param args unused
-     */
 
     public static void main (String [] args) {
 		Rational r = new Rational(5,7);
